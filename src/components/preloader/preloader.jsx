@@ -1,29 +1,18 @@
 import React from "react";
 
-import "./style.css";
+import { PreloaderContainer, Spinner } from "./styled";
 
-/* preloader from https://loading.io/css/  */
 function PreloaderPage() {
   return (
-    <div class="preloader">
-      <div>
-        <p>Time Manager</p>
-      </div>
-      <div class="lds-spinner">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+    <PreloaderContainer>
+      <p>Time Manager</p>
+
+      <Spinner>
+        {new Array(12).fill(1).map((_, i) => (
+          <div key={i.toString()}></div>
+        ))}
+      </Spinner>
+    </PreloaderContainer>
   );
 }
 

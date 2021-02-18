@@ -2,7 +2,12 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 import { Preloader } from "./components";
 
-const App = lazy(() => import("./app"));
+const App = lazy(
+  () =>
+    new Promise((resolve) => {
+      setTimeout(() => resolve(import("./app")), 1000);
+    })
+);
 
 ReactDOM.render(
   <Suspense fallback={<Preloader />}>
