@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { generateKey } from "@vkr/app-utils";
@@ -6,36 +6,34 @@ import { generateKey } from "@vkr/app-utils";
 import { AppBar, AppMenu } from "../../components";
 import { Container, Content } from "./styled";
 
-import book from "./assets/address-book-regular.svg";
-import address from "./assets/address-card-regular.svg";
-import clock from "./assets/clock-regular.svg";
-import calendar from "./assets/calendar-alt-regular.svg";
-
 import "./style.css";
-
-const items = [
-  { key: generateKey(), source: book, title: "contacts", route: "/about" },
-  { key: generateKey(), source: clock, title: "timer", route: "/home" },
-  { key: generateKey(), source: address, title: "address", route: "/" },
-  { key: generateKey(), source: calendar, title: "calendar", route: "/about" },
-];
 
 function AppContainer({ children }) {
   let history = useHistory();
 
-  const actionsWithClickHandlers = useMemo(
-    () =>
-      items.map((item) => ({
+  const [actions, setActions] = useState([]);
+
+  useEffect(() => {
+    const modules = process.env.MODULES_LIST.map((item) =>
+      import("@vkr/modules-" + item)
+    );
+
+    Promise.all(modules).then((res) => {
+      const actionsWithClickHandlers = res.map(({ default: item }) => ({
         ...item,
+        key: generateKey(),
+        source: item.icon,
         onClick: () => history.push(item.route),
-      })),
-    [history]
-  );
+      }));
+
+      setActions(actionsWithClickHandlers);
+    });
+  }, []);
 
   return (
     <Container>
       <AppBar />
-      <AppMenu actions={actionsWithClickHandlers} />
+      <AppMenu actions={actions} />
       <Content>{children}</Content>
     </Container>
   );

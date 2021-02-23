@@ -1,7 +1,12 @@
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const InterpolateHtmlPlugin = require("interpolate-html-plugin");
 
 const paths = require("./paths");
+const getClientEnvironment = require("./env");
+
+const env = getClientEnvironment("");
 
 module.exports = {
   entry: paths.appIndexJs,
@@ -17,7 +22,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        include: [paths.packagesSrc, paths.appSrc],
+        include: [paths.packagesSrc, paths.appSrc, paths.modulesSrc],
         loader: "babel-loader",
         options: { configFile: "./config/babel.config.json" },
       },
@@ -44,8 +49,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: paths.appHtml,
-    }),
+    new HtmlWebpackPlugin({ template: paths.appHtml }),
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+    new webpack.DefinePlugin(env.stringified),
   ],
 };

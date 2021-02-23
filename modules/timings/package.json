@@ -1,0 +1,7 @@
+{
+  "name": "@vkr/modules-timings",
+  "version": "0.0.1",
+  "description": "Default timings module",
+  "main": "index.js",
+  "private": false
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@vkr/modules-settings",
+  "version": "0.0.1",
+  "description": "Default settings module",
+  "main": "index.js",
+  "private": false
+}

@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import { generateKey } from "@vkr/app-utils";
 
 import { AppContainer } from "./containers";
 
 function Routing() {
+  const [routes, setRoutes] = useState([]);
+
+  useEffect(() => {
+    const modules = process.env.MODULES_LIST.map((item) =>
+      import("@vkr/modules-" + item)
+    );
+
+    Promise.all(modules).then((res) => {
+      console.log(res);
+      const routes = res.map(({ default: item, Component }) => (
+        <Route
+          key={generateKey()}
+          exact
+          path={item.route}
+          component={Component}
+        />
+      ));
+
+      setRoutes(routes);
+    });
+  }, []);
+
   return (
     <Router>
       <AppContainer>
-        <Switch>
-          <Route exact path="/about" component={() => <p>/about</p>} />
-          <Route exact path="/home" component={() => <p>/home</p>} />
-          <Route exact path="/" component={() => <p>/</p>} />
-        </Switch>
+        <Switch>{routes}</Switch>
       </AppContainer>
     </Router>
   );
