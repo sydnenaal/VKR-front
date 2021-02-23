@@ -9,6 +9,9 @@ module.exports = {
     path: paths.appBuild,
     filename: "index_bundle.js",
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {

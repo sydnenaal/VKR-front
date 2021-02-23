@@ -6,12 +6,13 @@
   "private": true,
   "workspaces": [
     "packages/@vkr/*",
-    "src"
+    "core"
   ],
   "scripts": {
     "start": "webpack serve --config config/webpack.config.js --mode development --open --hot ",
     "build": "webpack --mode production -с ./config/webpack.config.j",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "registration": "lerna bootstrap --npm-client=yarn --config=./config/lerna.json"
   },
   "author": "",
   "license": "ISC",

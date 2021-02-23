@@ -1,0 +1,7 @@
+{
+  "name": "@vkr/app-utils",
+  "version": "0.0.1",
+  "description": "VKR Front application utilites",
+  "main": "index.js",
+  "private": false
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { AppBarContainer, AppTitle } from "./styled";
 
@@ -12,4 +12,4 @@ function AppBar() {
   );
 }
 
-export default AppBar;
+export default memo(AppBar);

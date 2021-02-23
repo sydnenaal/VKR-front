@@ -1,0 +1,12 @@
+{
+  "name": "@vkr/app-core",
+  "version": "0.0.1",
+  "description": "VKR Front core package",
+  "private": true,
+  "dependencies": {
+    "@vkr/app-common": "^0.0.1",
+    "@vkr/app-constants": "^0.0.1",
+    "@vkr/app-utils": "^0.0.1",
+    "react-router-dom": "^5.2.0"
+  }
+}

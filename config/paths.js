@@ -7,15 +7,15 @@ const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 module.exports = {
   dotenv: resolveApp(".env"),
   appPath: resolveApp("."),
+  appIndexJs: resolveApp("core/index"),
   appBuild: resolveApp("build"),
   appPublic: resolveApp("public"),
   appHtml: resolveApp("public/index.html"),
   appPackageJson: resolveApp("package.json"),
-  appSrc: resolveApp("src"),
+  appSrc: resolveApp("core"),
   packagesSrc: resolveApp("packages"),
   appTsConfig: resolveApp("tsconfig.json"),
   appJsConfig: resolveApp("jsconfig.json"),
   yarnLockFile: resolveApp("yarn.lock"),
-  proxySetup: resolveApp("src/setupProxy.js"),
   appNodeModules: resolveApp("node_modules"),
 };

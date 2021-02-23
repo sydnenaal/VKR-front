@@ -1,17 +1,17 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { MenuContainer, MenuItem, MenuItemIcon, MenuItemTitle } from "./styled";
 
 function AppMenu({ actions }) {
   return (
     <MenuContainer>
-      {actions.map((item) => (
-        <MenuItem key={item.key}>
+      {actions.map(({ onClick, key, title, source }) => (
+        <MenuItem onClick={onClick} key={key}>
           <MenuItemIcon>
-            <img width="40%" color="white" src={item.source} />
+            <img width="40%" color="white" src={source} />
           </MenuItemIcon>
           <MenuItemTitle>
-            <p>{item.title}</p>
+            <p>{title}</p>
           </MenuItemTitle>
         </MenuItem>
       ))}
@@ -19,4 +19,4 @@ function AppMenu({ actions }) {
   );
 }
 
-export default AppMenu;
+export default memo(AppMenu);
