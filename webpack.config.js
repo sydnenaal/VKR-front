@@ -1,6 +1,10 @@
 const path = require("path");
+const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 module.exports = {
   entry: "./src/index.js",
@@ -13,9 +17,8 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        include: [resolveApp("src"), resolveApp("packages")],
+        loader: "babel-loader",
       },
       {
         test: /\.css$/i,
@@ -37,6 +40,7 @@ module.exports = {
     ],
   },
   resolve: {
+    modules: ["node_modules"],
     extensions: [".js", ".jsx"],
   },
   plugins: [

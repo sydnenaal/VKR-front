@@ -1,3 +1,3 @@
-export * from "./preloader";
-export * from "./appBar";
-export * from "./appMenu";
+export * from "./Preloader";
+export * from "./AppBar";
+export * from "./AppMenu";

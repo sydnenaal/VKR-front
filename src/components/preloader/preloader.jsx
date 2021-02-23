@@ -1,17 +1,13 @@
 import React from "react";
 
-import { PreloaderContainer, Spinner } from "./styled";
+import { PreloaderContainer } from "./elements";
+import { PresentationLogo, SpinnerLoader } from "@vkr/app-common";
 
 function PreloaderPage() {
   return (
     <PreloaderContainer>
-      <p>Time Manager</p>
-
-      <Spinner>
-        {new Array(12).fill(1).map((_, i) => (
-          <div key={i.toString()}></div>
-        ))}
-      </Spinner>
+      <PresentationLogo />
+      <SpinnerLoader />
     </PreloaderContainer>
   );
 }

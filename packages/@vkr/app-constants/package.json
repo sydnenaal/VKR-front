@@ -1,0 +1,7 @@
+{
+  "name": "@vkr/app-constants",
+  "version": "0.0.1",
+  "description": "VKR Front application constants",
+  "main": "index.js",
+  "private": false
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@vkr/app-common",
+  "version": "0.0.1",
+  "description": "VKR Front application common files",
+  "main": "index.js",
+  "private": false,
+  "peerDependencies": {
+    "react": "*",
+    "styled-components": "*"
+  }
+}
