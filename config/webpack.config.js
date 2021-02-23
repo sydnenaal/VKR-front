@@ -1,15 +1,12 @@
-const path = require("path");
-const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
+const paths = require("./paths");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: paths.appIndexJs,
   output: {
-    path: path.join(__dirname, "/dist"),
+    path: paths.appBuild,
     filename: "index_bundle.js",
   },
   module: {
@@ -17,8 +14,9 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        include: [resolveApp("src"), resolveApp("packages")],
+        include: [paths.packagesSrc, paths.appSrc],
         loader: "babel-loader",
+        options: { configFile: "./config/babel.config.json" },
       },
       {
         test: /\.css$/i,
@@ -31,9 +29,7 @@ module.exports = {
         use: [
           {
             loader: "svg-url-loader",
-            options: {
-              limit: 10000,
-            },
+            options: { limit: 10000 },
           },
         ],
       },
@@ -46,7 +42,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: paths.appHtml,
     }),
   ],
 };
