@@ -1,5 +1,4 @@
 import Icon from "./icon.svg";
-import { Component } from "./src";
 
 export * from "./src";
 
@@ -8,5 +7,4 @@ export default {
   icon: Icon,
   route: "/settings",
   title: "settings",
-  component: Component,
 };

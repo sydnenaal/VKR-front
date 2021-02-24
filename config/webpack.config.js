@@ -49,7 +49,10 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({ template: paths.appHtml }),
+    new HtmlWebpackPlugin({
+      template: paths.appHtml,
+      favicon: paths.appFavicon,
+    }),
     new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
     new webpack.DefinePlugin(env.stringified),
   ],
