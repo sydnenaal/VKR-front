@@ -5,6 +5,9 @@ export const AppBarContainer = styled.div`
   height: 7vh;
   min-height: 30px;
   background-color: #2d2f34;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const AppTitle = styled.div`

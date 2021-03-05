@@ -1,9 +1,9 @@
 import React from "react";
 
-import { PreloaderContainer } from "./elements";
+import { PreloaderContainer } from "./styled";
 import { PresentationLogo, SpinnerLoader } from "@vkr/app-common";
 
-function PreloaderPage() {
+export function PreloaderPage() {
   return (
     <PreloaderContainer>
       <PresentationLogo />
@@ -11,5 +11,3 @@ function PreloaderPage() {
     </PreloaderContainer>
   );
 }
-
-export default PreloaderPage;

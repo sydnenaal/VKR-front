@@ -5,7 +5,7 @@ import { useModulesInternals } from "../../hooks";
 import { AppBar, AppMenu } from "../../components";
 import { Container, Content, BodyStyle } from "./styled";
 
-function AppContainer({ children }) {
+export function AppContainer({ children }) {
   const history = useHistory();
   const modules = useModulesInternals();
 
@@ -26,5 +26,3 @@ function AppContainer({ children }) {
     </Container>
   );
 }
-
-export default AppContainer;
