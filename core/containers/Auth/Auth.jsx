@@ -2,7 +2,7 @@ import React from "react";
 
 import { AuthComponent } from "../../components";
 
-export default function Auth() {
+export function AuthContainer() {
   const handleSubmit = (formData) => {
     console.log(formData);
   };

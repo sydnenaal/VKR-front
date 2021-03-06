@@ -1,16 +1,23 @@
-import React, { memo } from "react";
+import React from "react";
 
 import Avatar from "@atlaskit/avatar";
 
-import { AppBarContainer, AppTitle } from "./styled";
+import { AppBarContainer, AppTitle, UserContainer } from "./styled";
 
-export function AppBar() {
+export function AppBar({ user }) {
   return (
     <AppBarContainer>
       <AppTitle>
         <p>Time Manager</p>
-        <Avatar />
       </AppTitle>
+      <UserContainer>
+        <Avatar />
+        <p>{user.name}</p>
+      </UserContainer>
     </AppBarContainer>
   );
 }
+
+AppBar.defaultProps = {
+  user: { name: "Dmitry" },
+};

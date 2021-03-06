@@ -1,9 +1,9 @@
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 
-import { Preloader } from "./components";
+import { PreloaderPage } from "./components";
 
-const App = lazy(
+const Application = lazy(
   () =>
     new Promise((resolve) => {
       setTimeout(() => resolve(import("./routing")), 1000);
@@ -11,8 +11,8 @@ const App = lazy(
 );
 
 ReactDOM.render(
-  <Suspense fallback={<Preloader />}>
-    <App />
+  <Suspense fallback={<PreloaderPage />}>
+    <Application />
   </Suspense>,
   document.getElementById("root")
 );

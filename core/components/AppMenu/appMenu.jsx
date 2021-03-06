@@ -2,9 +2,9 @@ import React, { useMemo } from "react";
 
 import { MenuContainer, MenuItem, MenuItemIcon, MenuItemTitle } from "./styled";
 
-function MenuItemComonent({ onClick, key, title, source }) {
+function MenuItemComonent({ onClick, title, source }) {
   return (
-    <MenuItem onClick={onClick} key={key}>
+    <MenuItem onClick={onClick}>
       <MenuItemIcon>
         <img width="40%" color="white" src={source} />
       </MenuItemIcon>

@@ -10,8 +10,9 @@ export function AppContainer({ children }) {
   const modules = useModulesInternals();
 
   const actions = useMemo(() => {
-    return modules.map(({ default: item }) => ({
+    return modules.map(({ default: item, key }) => ({
       ...item,
+      key,
       source: item.icon,
       onClick: () => history.push(item.route),
     }));

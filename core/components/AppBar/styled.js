@@ -28,3 +28,16 @@ export const AppTitle = styled.div`
       6px 5px 0px rgba(0, 0, 0, 0.3);
   }
 `;
+
+export const UserContainer = styled.div`
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  margin-right: 25px;
+
+  p {
+    margin: 0 15px 0 15px;
+  }
+`;
