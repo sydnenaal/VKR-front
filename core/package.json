@@ -6,12 +6,14 @@
   "dependencies": {
     "@atlaskit/avatar": "^20.2.1",
     "@atlaskit/button": "^15.1.4",
+    "@atlaskit/css-reset": "^6.0.5",
     "@atlaskit/form": "^8.2.1",
+    "@atlaskit/spinner": "^15.0.6",
     "@atlaskit/textfield": "^5.0.0",
+    "@vkr/app-auth": "^0.0.1",
     "@vkr/app-common": "^0.0.1",
     "@vkr/app-constants": "^0.0.1",
     "@vkr/app-utils": "^0.0.1",
-    "@vkr/app-auth": "^0.0.1",
     "@vkr/modules-settings": "^0.0.1",
     "@vkr/modules-timings": "^0.0.1",
     "react-router-dom": "^5.2.0"

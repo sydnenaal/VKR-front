@@ -1,11 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useMemo, memo } from "react";
 import { useHistory } from "react-router-dom";
 
 import { useModulesInternals } from "../../hooks";
-import { AppBar, AppMenu } from "../../components";
-import { Container, Content, BodyStyle } from "./styled";
 
-export function AppContainer({ children }) {
+import { AppComponent } from "../../components";
+
+export const AppContainer = memo(({ children }) => {
   const history = useHistory();
   const modules = useModulesInternals();
 
@@ -18,12 +18,5 @@ export function AppContainer({ children }) {
     }));
   }, [modules]);
 
-  return (
-    <Container>
-      <BodyStyle />
-      <AppBar />
-      <AppMenu actions={actions} />
-      <Content>{children}</Content>
-    </Container>
-  );
-}
+  return <AppComponent actions={actions}>{children}</AppComponent>;
+});

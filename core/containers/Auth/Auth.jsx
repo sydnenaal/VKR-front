@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useCallback, memo } from "react";
+
+import { useAuth } from "@vkr/app-auth";
 
 import { AuthComponent } from "../../components";
 
-export function AuthContainer() {
-  const handleSubmit = (formData) => {
-    console.log(formData);
-  };
+export const AuthContainer = memo(() => {
+  const { loading, loginUser } = useAuth();
 
-  return <AuthComponent onSubmit={handleSubmit} />;
-}
+  const handleSubmit = useCallback(
+    ({ login, password }) => {
+      if (!loading) loginUser(login, password);
+    },
+    [loading, loginUser]
+  );
+
+  return <AuthComponent loading={loading} onSubmit={handleSubmit} />;
+});

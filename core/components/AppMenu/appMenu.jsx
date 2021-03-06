@@ -16,9 +16,10 @@ function MenuItemComonent({ onClick, title, source }) {
 }
 
 export function AppMenu({ actions }) {
-  const menuItems = useMemo(() => {
-    return actions.map((props) => <MenuItemComonent {...props} />);
-  }, [actions]);
+  const menuItems = useMemo(
+    () => actions.map((props) => <MenuItemComonent {...props} />),
+    [actions]
+  );
 
   return <MenuContainer>{menuItems}</MenuContainer>;
 }

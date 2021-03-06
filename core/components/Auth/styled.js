@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Button from "@atlaskit/button/standard-button";
+import { LoadingButton } from "@atlaskit/button";
 
 import { COLORS_PRIMARY } from "@vkr/app-constants";
 
@@ -29,8 +29,7 @@ export const SubmitContainer = styled.div`
   justify-content: center;
 `;
 
-export const StyledButton = styled(Button)`
+export const StyledButton = styled(LoadingButton)`
   margin: 30px 30% 30px 30%;
-  font-family: "Roboto Mono", monospace;
   width: 100% !important;
 `;
