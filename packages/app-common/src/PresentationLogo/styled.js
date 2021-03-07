@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Logo = styled.p`
-  font-size: 40px;
+  font-size: ${(props) => props.fontSize || "40px"};
   font-weight: 400;
-  letter-spacing: 3px;
+  letter-spacing: ${(props) => props.letterSpacing || "3px"};
   margin: ${(props) => props.margin || "20px"};
   color: #647295;
   font-family: "Roboto Mono", monospace;

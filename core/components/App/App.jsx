@@ -1,15 +1,18 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { AppBar, AppMenu } from "../";
-import { Container, Content, BodyStyle } from "./styled";
+import { Container } from "./styled";
 
-export function AppComponent({ actions, children }) {
-  return (
+export const AppComponent = memo(
+  ({ isDrawerOpen, toggleDrawer, actions, user, onLogout, children }) => (
     <Container>
-      <BodyStyle />
-      <AppBar />
-      <AppMenu actions={actions} />
-      <Content>{children}</Content>
+      <AppBar onLogout={onLogout} user={user} toggleDrawer={toggleDrawer} />
+      <AppMenu
+        isOpen={isDrawerOpen}
+        toggleDrawer={toggleDrawer}
+        actions={actions}
+      />
+      {children}
     </Container>
-  );
-}
+  )
+);

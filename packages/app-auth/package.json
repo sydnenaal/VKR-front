@@ -5,6 +5,9 @@
   "main": "index.js",
   "private": false,
   "peerDependencies": {
-    "react": "*"
+    "react": "*",
+    "ramda": "*",
+    "reselect": "*",
+    "react-redux": "*"
   }
 }

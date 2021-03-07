@@ -1,9 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Logo } from "./styled";
 
-function PresentationLogo({ margin }) {
-  return <Logo margin={margin}>Time Manager</Logo>;
-}
-
-export default PresentationLogo;
+export const PresentationLogo = memo(({ margin, fontSize, letterSpacing }) => {
+  return (
+    <Logo margin={margin} fontSize={fontSize} letterSpacing={letterSpacing}>
+      Time Manager
+    </Logo>
+  );
+});

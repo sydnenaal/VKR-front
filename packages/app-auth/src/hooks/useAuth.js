@@ -1,42 +1,28 @@
-import { useState, useCallback, useEffect } from "react";
+import { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { isAuthLoading, selectUserData, isAuthenticated } from "../selectors";
+import { AUTH_LOGOUT } from "../reducers";
+import { Login } from "../actions";
 
 export function useAuth() {
-  const [loading, setLoading] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
-  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    setIsAuth(() => !!user.token);
-  }, [user]);
+  const loading = useSelector(isAuthLoading);
+  const isAuth = useSelector(isAuthenticated);
+  const user = useSelector(selectUserData);
 
-  // mock auth loading
-  const loginUser = useCallback((login, password) => {
-    setLoading(true);
-
-    setTimeout(() => {
-      if (login === "admin" && password === "admin") {
-        const user = {
-          login: "admin",
-          password: "admin",
-          token: "000000000000",
-        };
-
-        localStorage.setItem("token", user.token);
-        setUser(user);
-
-        setLoading(false);
-      }
-    }, 1000);
-  }, []);
+  const loginUser = useCallback(
+    (login, password) => {
+      dispatch(Login(login, password));
+    },
+    [dispatch]
+  );
 
   const logout = useCallback(() => {
-    setLoading(true);
-
-    localStorage.clear();
-    setUser({});
-
-    setLoading(false);
-  }, []);
+    console.log("logout");
+    dispatch({ type: AUTH_LOGOUT });
+  }, [dispatch]);
 
   return { user, loading, isAuth, loginUser, logout };
 }

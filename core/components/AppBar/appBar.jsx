@@ -1,23 +1,62 @@
-import React from "react";
+import React, { useCallback, memo } from "react";
 
 import Avatar from "@atlaskit/avatar";
+import {
+  AtlassianNavigation,
+  ProductHome,
+  AppSwitcher,
+} from "@atlaskit/atlassian-navigation";
+import ChevronDownIcon from "@atlaskit/icon/glyph/chevron-down";
+import DropdownMenu, {
+  DropdownItem,
+  DropdownItemGroup,
+} from "@atlaskit/dropdown-menu";
+import { PresentationLogo } from "@vkr/app-common";
 
-import { AppBarContainer, AppTitle, UserContainer } from "./styled";
+import { UserContainer } from "./styled";
 
-export function AppBar({ user }) {
+const Logo = () => (
+  <PresentationLogo margin="0" fontSize="17px" letterSpacing="1.5px" />
+);
+
+const Home = () => <ProductHome icon={Logo} logo={Logo} />;
+
+const UserActions = memo(({ trigger, onLogout }) => {
   return (
-    <AppBarContainer>
-      <AppTitle>
-        <p>Time Manager</p>
-      </AppTitle>
+    <DropdownMenu trigger={trigger}>
+      <DropdownItemGroup onClick={() => console.log("click!!")}>
+        <DropdownItem onClick={() => console.log("click!!")}>
+          Profile
+        </DropdownItem>
+        <DropdownItem onClick={onLogout}>Logout</DropdownItem>
+      </DropdownItemGroup>
+    </DropdownMenu>
+  );
+});
+
+export const AppBar = memo(({ onLogout, toggleDrawer, user }) => {
+  const userComponent = useCallback(() => {
+    const User = (
       <UserContainer>
         <Avatar />
-        <p>{user.name}</p>
+        <p>{user.username}</p>
+        <ChevronDownIcon />
       </UserContainer>
-    </AppBarContainer>
-  );
-}
+    );
 
-AppBar.defaultProps = {
-  user: { name: "Dmitry" },
-};
+    return <UserActions onLogout={onLogout} trigger={User} />;
+  }, [user, onLogout]);
+
+  const appSwitcherComponnet = useCallback(
+    () => <AppSwitcher onClick={toggleDrawer} />,
+    [toggleDrawer]
+  );
+
+  return (
+    <AtlassianNavigation
+      renderProductHome={Home}
+      renderAppSwitcher={appSwitcherComponnet}
+      renderHelp={userComponent}
+    />
+  );
+});

@@ -1,20 +1,29 @@
-import "./wdyr";
+import "regenerator-runtime/runtime";
 
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 import { PreloaderPage } from "./components";
+import { composeStoreWithModules } from "./store";
 
-const Application = lazy(
-  () =>
-    new Promise((resolve) => {
-      setTimeout(() => resolve(import("./routing")), 1000);
-    })
-);
+const Router = lazy(() => import("./routing"));
 
-ReactDOM.render(
-  <Suspense fallback={<PreloaderPage />}>
-    <Application />
-  </Suspense>,
-  document.getElementById("root")
-);
+function Application() {
+  const store = composeStoreWithModules({});
+  const persistor = persistStore(store);
+
+  return (
+    <Suspense fallback={<PreloaderPage />}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router />
+        </PersistGate>
+      </Provider>
+    </Suspense>
+  );
+}
+
+ReactDOM.render(<Application />, document.getElementById("root"));

@@ -1,25 +1,29 @@
-import React, { useMemo } from "react";
+import React, { useMemo, memo } from "react";
 
-import { MenuContainer, MenuItem, MenuItemIcon, MenuItemTitle } from "./styled";
+import Drawer from "@atlaskit/drawer";
 
-function MenuItemComonent({ onClick, title, source }) {
-  return (
-    <MenuItem onClick={onClick}>
-      <MenuItemIcon>
-        <img width="40%" color="white" src={source} />
-      </MenuItemIcon>
-      <MenuItemTitle>
-        <p>{title}</p>
-      </MenuItemTitle>
-    </MenuItem>
-  );
-}
+import { MenuItem, MenuItemIcon, MenuItemTitle } from "./styled";
 
-export function AppMenu({ actions }) {
+const MenuItemComonent = memo(({ onClick, title, source }) => (
+  <MenuItem onClick={onClick}>
+    <MenuItemIcon>
+      <img width="40%" src={source} />
+    </MenuItemIcon>
+    <MenuItemTitle>
+      <p>{title}</p>
+    </MenuItemTitle>
+  </MenuItem>
+));
+
+export const AppMenu = memo(({ toggleDrawer, isOpen, actions }) => {
   const menuItems = useMemo(
     () => actions.map((props) => <MenuItemComonent {...props} />),
     [actions]
   );
 
-  return <MenuContainer>{menuItems}</MenuContainer>;
-}
+  return (
+    <Drawer onClose={toggleDrawer} isOpen={isOpen}>
+      {menuItems}
+    </Drawer>
+  );
+});

@@ -43,16 +43,19 @@ function PrivateRoute({ component: Component, ...props }) {
 function AuthRoute() {
   const { isAuth } = useAuth();
 
-  const renderFunc = useCallback(({ location }) => {
-    const state = { from: location };
-    const redirectData = { pathname: "/", state };
+  const renderFunc = useCallback(
+    ({ location }) => {
+      const state = { from: location };
+      const redirectData = { pathname: "/", state };
 
-    if (isAuth) {
-      return <Redirect to={redirectData} />;
-    }
+      if (isAuth) {
+        return <Redirect to={redirectData} />;
+      }
 
-    return <AuthContainer />;
-  }, []);
+      return <AuthContainer />;
+    },
+    [isAuth]
+  );
 
   return <Route exact path="/login" render={renderFunc} />;
 }
