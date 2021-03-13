@@ -60,3 +60,6 @@ export const AppBar = memo(({ onLogout, toggleDrawer, user }) => {
     />
   );
 });
+
+UserActions.displayName = "UserActions";
+AppBar.displayName = "AppBar";

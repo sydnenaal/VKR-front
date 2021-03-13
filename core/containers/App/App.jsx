@@ -1,37 +1,29 @@
-import React, { useMemo, useState, useCallback, memo } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useMemo, memo } from "react";
 
-import { useModulesInternals } from "../../hooks";
+import { useModulesInternals, useToggler } from "../../hooks";
 import { useAuth } from "@vkr/app-auth";
 
 import { AppComponent } from "../../components";
 
 export const AppContainer = memo(({ children }) => {
-  const history = useHistory();
   const modules = useModulesInternals();
 
   const { user, logout } = useAuth();
 
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDrawerOpen, toggleIsDrawerOpen] = useToggler(false);
+  const [isNotificationShow, toggleIsNotificationShow] = useToggler(false);
 
-  const handleToggleDrawer = useCallback(
-    () => setIsDrawerOpen((value) => !value),
-    []
+  const actions = useMemo(
+    () => modules.map(({ default: item, key }) => ({ ...item, key })),
+    [modules, history]
   );
-
-  const actions = useMemo(() => {
-    return modules.map(({ default: item, key }) => ({
-      ...item,
-      key,
-      source: item.icon,
-      onClick: () => history.push(item.route),
-    }));
-  }, [modules]);
 
   return (
     <AppComponent
-      toggleDrawer={handleToggleDrawer}
+      toggleDrawer={toggleIsDrawerOpen}
+      toggleNotification={toggleIsNotificationShow}
       isDrawerOpen={isDrawerOpen}
+      isNotificationOpen={isNotificationShow}
       actions={actions}
       onLogout={logout}
       user={user}

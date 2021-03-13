@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo } from "react";
 
 import TextField from "@atlaskit/textfield";
 import Field from "@atlaskit/form/Field";

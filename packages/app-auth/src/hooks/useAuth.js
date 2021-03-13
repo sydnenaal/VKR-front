@@ -20,7 +20,6 @@ export function useAuth() {
   );
 
   const logout = useCallback(() => {
-    console.log("logout");
     dispatch({ type: AUTH_LOGOUT });
   }, [dispatch]);
 

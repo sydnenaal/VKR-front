@@ -6,23 +6,29 @@ export function Login(login, password) {
     try {
       dispatch({ type: AUTH_LOADING });
 
-      const user = {
-        username: "Dmitry Erokhin",
-        role: "user",
-        login: "admin",
-        password: "admin",
-        token: "000000000000",
-      };
+      const response = await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const user = {
+            name: "Dmitry",
+            surname: "Erokhin",
+            role: "user",
+            login: "admin",
+            password: "admin",
+            token: "000000000000",
+          };
 
-      setTimeout(() => {
-        if (login !== "admin" || password !== "admin") {
-          throw "401: unauthorized";
-        }
+          if (login !== "admin" || password !== "admin") {
+            reject({ success: false, message: "401: unauthorized" });
+          }
 
-        dispatch({ type: AUTH_SUCCESS, payload: user });
-      }, 1000);
+          resolve({ success: true, body: user });
+        }, 1000);
+      });
+
+      dispatch({ type: AUTH_SUCCESS, payload: response.body });
     } catch (err) {
-      dispatch({ type: AUTH_ERROR, payload: err });
+      console.log(err);
+      dispatch({ type: AUTH_ERROR, payload: err.message });
     }
   };
 }

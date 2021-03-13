@@ -24,6 +24,7 @@
     "css-loader": "^5.0.2",
     "dotenv": "^8.2.0",
     "dotenv-expand": "^5.1.0",
+    "eslint": "^7.21.0",
     "html-webpack-plugin": "^5.1.0",
     "interpolate-html-plugin": "^4.0.0",
     "lerna": "^3.22.1",

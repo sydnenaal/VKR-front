@@ -1,11 +1,21 @@
 import React, { memo } from "react";
 
-import { AppBar, AppMenu } from "../";
+import { AppBar, AppMenu, Notifications } from "../";
 import { Container } from "./styled";
 
 export const AppComponent = memo(
-  ({ isDrawerOpen, toggleDrawer, actions, user, onLogout, children }) => (
+  ({
+    isDrawerOpen,
+    isNotificationOpen,
+    toggleDrawer,
+    toggleNotification,
+    actions,
+    user,
+    onLogout,
+    children,
+  }) => (
     <Container>
+      <Notifications isOpen={isNotificationOpen} toggle={toggleNotification} />
       <AppBar onLogout={onLogout} user={user} toggleDrawer={toggleDrawer} />
       <AppMenu
         isOpen={isDrawerOpen}
@@ -16,3 +26,5 @@ export const AppComponent = memo(
     </Container>
   )
 );
+
+AppComponent.displayName = "AppComponent";
