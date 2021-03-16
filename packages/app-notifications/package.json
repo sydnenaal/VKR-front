@@ -1,0 +1,14 @@
+{
+  "name": "@vkr/app-notifications",
+  "version": "0.0.1",
+  "description": "VKR Front application notifications handling",
+  "main": "index.js",
+  "private": false,
+  "peerDependencies": {
+    "react": "*",
+    "uuid": "*",
+    "ramda": "*",
+    "reselect": "*",
+    "react-redux": "*"
+  }
+}

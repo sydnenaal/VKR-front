@@ -5,6 +5,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import { AuthReducer } from "@vkr/app-auth";
+import { NotificationsQueueReducer } from "@vkr/app-notifications";
 
 const persistConfig = {
   key: "root",
@@ -12,11 +13,15 @@ const persistConfig = {
   debug: true,
 };
 
-export const composeStoreWithModules = (modulesReducers) =>
-  createStore(
-    persistReducer(
-      persistConfig,
-      combineReducers({ ...modulesReducers, auth: AuthReducer })
-    ),
+export const composeStoreWithModules = (modulesReducers) => {
+  const rootReducer = {
+    ...modulesReducers,
+    auth: AuthReducer,
+    notifications: NotificationsQueueReducer,
+  };
+
+  return createStore(
+    persistReducer(persistConfig, combineReducers(rootReducer)),
     composeWithDevTools(applyMiddleware(thunk))
   );
+};

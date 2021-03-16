@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import uuid from "uuid";
 import { generateKey } from "@vkr/app-utils";
 
 export function useModulesInternals() {

@@ -18,6 +18,7 @@
     "@vkr/app-auth": "^0.0.1",
     "@vkr/app-common": "^0.0.1",
     "@vkr/app-constants": "^0.0.1",
+    "@vkr/app-notifications": "^0.0.1",
     "@vkr/app-utils": "^0.0.1",
     "@vkr/modules-settings": "^0.0.1",
     "@vkr/modules-timings": "^0.0.1",
