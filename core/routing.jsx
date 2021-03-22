@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, memo } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,14 +11,13 @@ import { useAuth } from "@vkr/app-auth";
 import { AppContainer, AuthContainer } from "./containers";
 import { useModulesInternals } from "./hooks";
 
-function PrivateRoute({ component: Component, ...props }) {
+const PrivateRoute = memo(({ component: Component, ...props }) => {
   const { isAuth } = useAuth();
 
   const renderFunc = useCallback(
     ({ location }) => {
-      const state = { from: location };
-      const loginData = { pathname: "/login", state };
-      const homeData = { pathname: "/settings", state };
+      const loginData = { pathname: "/login", state: { from: location } };
+      const homeData = { pathname: "/settings", state: { from: location } };
 
       if (!isAuth) {
         return <Redirect to={loginData} />;
@@ -38,18 +37,15 @@ function PrivateRoute({ component: Component, ...props }) {
   );
 
   return <Route {...props} render={renderFunc} />;
-}
+});
 
-function AuthRoute() {
+const AuthRoute = memo(() => {
   const { isAuth } = useAuth();
 
   const renderFunc = useCallback(
     ({ location }) => {
-      const state = { from: location };
-      const redirectData = { pathname: "/", state };
-
       if (isAuth) {
-        return <Redirect to={redirectData} />;
+        return <Redirect to={{ pathname: "/", state: { from: location } }} />;
       }
 
       return <AuthContainer />;
@@ -58,9 +54,9 @@ function AuthRoute() {
   );
 
   return <Route exact path="/login" render={renderFunc} />;
-}
+});
 
-function Routing() {
+const Routing = memo(() => {
   const modules = useModulesInternals();
 
   const routes = useMemo(() => {
@@ -78,6 +74,10 @@ function Routing() {
       </Switch>
     </Router>
   );
-}
+});
+
+PrivateRoute.displayName = "PrivateRoute";
+AuthRoute.displayName = "AuthRoute";
+Routing.displayName = "Routing";
 
 export default Routing;

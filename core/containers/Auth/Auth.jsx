@@ -8,9 +8,7 @@ export const AuthContainer = memo(() => {
   const { loading, loginUser } = useAuth();
 
   const handleSubmit = useCallback(
-    ({ login, password }) => {
-      loginUser(login, password);
-    },
+    ({ login, password }) => loginUser(login, password),
     [loading, loginUser]
   );
 

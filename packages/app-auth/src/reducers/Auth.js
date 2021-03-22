@@ -9,7 +9,9 @@ const initialState = {
   data: {},
 };
 
-export const AuthReducer = (state = initialState, { type, payload }) => {
+export const AuthReducer = (state = initialState, action) => {
+  const { type, payload } = action;
+
   switch (type) {
     case AUTH_LOADING:
       return { ...state, loading: true };

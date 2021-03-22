@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 
-import React, { Suspense, lazy } from "react";
+import React, { StrictMode, Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -16,13 +16,15 @@ function Application() {
   const persistor = persistStore(store);
 
   return (
-    <Suspense fallback={<PreloaderPage />}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Router />
-        </PersistGate>
-      </Provider>
-    </Suspense>
+    <StrictMode>
+      <Suspense fallback={<PreloaderPage />}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Router />
+          </PersistGate>
+        </Provider>
+      </Suspense>
+    </StrictMode>
   );
 }
 

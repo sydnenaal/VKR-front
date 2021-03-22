@@ -1,25 +1,29 @@
-export const PUSH_NOTIFICATION = "notifications/push_error";
-export const REMOVE_NOTIFICATION = "notifications/remove_error";
+import { v4 as uuidv4 } from "uuid";
+
+export const SET_NOTIFICATIONS = "notifications/set_notification";
 export const SET_TIMEOUT_CONFIG = "notifications/set_timeout_config";
+
+const MAX_LENGTH = 8;
+const initialQueue = new Array(MAX_LENGTH).fill(1).map(() => ({
+  isOpen: false,
+  id: uuidv4(),
+}));
 
 const initialState = {
   timeout: {
-    error: 3000,
+    error: "none",
     warning: 3000,
     attachment: "none",
   },
-  queue: [],
+  queue: initialQueue,
 };
 
-export function NotificationsQueueReducer(state = initialState) {
+export function NotificationsQueueReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case PUSH_NOTIFICATION:
-      return { ...state, queue: [...state.queue, payload] };
-    case REMOVE_NOTIFICATION:
-      const filteredQueue = state.queue.filter((item) => item.id !== payload);
-      return { ...state, queue: filteredQueue };
+    case SET_NOTIFICATIONS:
+      return { ...state, queue: payload };
     case SET_TIMEOUT_CONFIG:
       return { ...state, timeout: { ...state.timeout, ...payload } };
     default:

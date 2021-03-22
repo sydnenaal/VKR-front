@@ -1,9 +1,13 @@
-import React, { memo, useMemo, useEffect } from "react";
+import React, { memo, useMemo } from "react";
 
 import WarningIcon from "@atlaskit/icon/glyph/warning";
 import ErrorIcon from "@atlaskit/icon/glyph/error";
 
-import { NotificationsContainer } from "./styled";
+import Banner from "@atlaskit/banner";
+
+import { useNotifications } from "@vkr/app-notifications";
+
+import { NotificationsContainer, NotificationContainer } from "./styled";
 
 const iconsHash = {
   warning: <WarningIcon label="Warning icon" secondaryColor="inherit" />,
@@ -11,31 +15,26 @@ const iconsHash = {
   announcement: <></>,
 };
 
-export const Notifications = memo(
-  ({ message, type, isOpen, delay, toggle }) => {
-    useEffect(() => {
-      const timeout = setTimeout(toggle, delay);
+export const Notifications = memo(() => {
+  const { notificationsQueue, deleteNotification } = useNotifications();
 
-      return () => clearTimeout(timeout);
-    }, [delay, toggle]);
+  const notifications = useMemo(
+    () =>
+      notificationsQueue.map(({ type, message, id, isOpen }) => (
+        <NotificationContainer
+          key={id}
+          onClick={() => deleteNotification(id)}
+          isOpen={isOpen}
+        >
+          <Banner appearance={type} icon={iconsHash[type]} isOpen={isOpen}>
+            {message}
+          </Banner>
+        </NotificationContainer>
+      )),
+    [notificationsQueue, deleteNotification]
+  );
 
-    const iconComponent = useMemo(() => iconsHash[type], [type]);
+  return <NotificationsContainer>{notifications}</NotificationsContainer>;
+});
 
-    return (
-      <NotificationsContainer
-        onClick={toggle}
-        appearance={type}
-        icon={iconComponent}
-        isOpen={isOpen}
-      >
-        {message}
-      </NotificationsContainer>
-    );
-  }
-);
-
-Notifications.defaultProps = {
-  type: "warning",
-  message: "Warning goes here",
-  delay: 3000,
-};
+Notifications.displayName = "Notifications";

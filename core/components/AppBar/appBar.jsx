@@ -24,10 +24,8 @@ const Home = () => <ProductHome icon={Logo} logo={Logo} />;
 const UserActions = memo(({ trigger, onLogout }) => {
   return (
     <DropdownMenu trigger={trigger}>
-      <DropdownItemGroup onClick={() => console.log("click!!")}>
-        <DropdownItem onClick={() => console.log("click!!")}>
-          Profile
-        </DropdownItem>
+      <DropdownItemGroup>
+        <DropdownItem>Profile</DropdownItem>
         <DropdownItem onClick={onLogout}>Logout</DropdownItem>
       </DropdownItemGroup>
     </DropdownMenu>

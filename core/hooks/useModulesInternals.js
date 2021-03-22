@@ -1,21 +1,17 @@
-import { useState, useEffect } from "react";
-
-import uuid from "uuid";
-import { generateKey } from "@vkr/app-utils";
+import { useState, useLayoutEffect } from "react";
+import { assoc, map, compose } from "ramda";
+import { v4 as uuidv4 } from "uuid";
 
 export function useModulesInternals() {
   const [internals, setInternals] = useState([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const importByModuleName = (item) => import("@vkr/modules-" + item);
-    const modules = process.env.MODULES_LIST.map(importByModuleName);
+    const prepareModules = compose(setInternals, map(assoc("key", uuidv4())));
 
-    Promise.all(modules).then((response) => {
-      const getItemWithKey = (item) => ({ ...item, key: generateKey() });
-      const modulesWithUniqueKeys = response.map(getItemWithKey);
+    const modulePromises = process.env.MODULES_LIST.map(importByModuleName);
 
-      setInternals(modulesWithUniqueKeys);
-    });
+    Promise.all(modulePromises).then(prepareModules);
   }, []);
 
   return internals;

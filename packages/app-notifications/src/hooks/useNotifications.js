@@ -6,7 +6,7 @@ import { getNotificationsList } from "../selectors";
 import {
   pushNotification,
   removeNotification,
-  setNotificationConfig,
+  configureNotificationsTimeout,
 } from "../actions";
 
 export function useNotifications() {
@@ -14,23 +14,24 @@ export function useNotifications() {
 
   const notificationsQueue = useSelector(getNotificationsList);
 
-  const setConfig = useCallback(compose(dispatch, setNotificationConfig), [
-    dispatch,
-  ]);
-
-  const initNotificatons = useCallback(compose(dispatch, pushNotification), [
-    dispatch,
-  ]);
+  const setNotificationsTimeout = useCallback(
+    compose(dispatch, configureNotificationsTimeout),
+    [dispatch]
+  );
 
   const deleteNotification = useCallback(
     compose(dispatch, removeNotification),
     [dispatch]
   );
 
+  const initNotificaton = useCallback(compose(dispatch, pushNotification), [
+    dispatch,
+  ]);
+
   return {
     notificationsQueue,
-    initNotificatons,
+    initNotificaton,
     deleteNotification,
-    setConfig,
+    setNotificationsTimeout,
   };
 }

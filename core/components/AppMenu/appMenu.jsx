@@ -29,3 +29,5 @@ export const AppMenu = memo(({ toggleDrawer, isOpen, actions }) => {
     </Drawer>
   );
 });
+
+AppMenu.displayName = "AppMenu";

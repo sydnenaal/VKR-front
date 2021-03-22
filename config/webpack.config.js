@@ -29,17 +29,12 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "style-loader", "css-loader"],
       },
       {
         test: /\.svg$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "svg-url-loader",
-            options: { limit: 10000 },
-          },
-        ],
+        use: [{ loader: "svg-url-loader", options: { limit: 10000 } }],
       },
     ],
   },
