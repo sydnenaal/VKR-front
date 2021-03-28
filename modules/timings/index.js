@@ -1,10 +1,12 @@
-import Icon from "./icon.svg";
+import Icon from './icon.svg'
+import { App } from './src'
 
-export * from "./src";
+export * from './src'
 
 // Navigation menu item
-export default {
+export const module = {
   icon: Icon,
-  route: "/timings",
-  title: "timings",
-};
+  component: App,
+  route: '/timings',
+  title: 'timings',
+}

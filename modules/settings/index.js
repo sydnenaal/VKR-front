@@ -1,10 +1,12 @@
-import Icon from "./icon.svg";
+import Icon from './icon.svg'
+import { App } from './src'
 
-export * from "./src";
+export * from './src'
 
 // Navigation menu item
-export default {
+export const module = {
   icon: Icon,
-  route: "/settings",
-  title: "settings",
-};
+  component: App,
+  route: '/settings',
+  title: 'Settings',
+}

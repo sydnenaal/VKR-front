@@ -128,6 +128,19 @@
     "@atlaskit/theme" "^11.0.0"
     "@babel/runtime" "^7.0.0"
 
+"@atlaskit/breadcrumbs@^11.0.2":
+  version "11.0.2"
+  resolved "https://registry.yarnpkg.com/@atlaskit/breadcrumbs/-/breadcrumbs-11.0.2.tgz#89214d273f4509506b2c9d98a3865b1a8b4997ef"
+  integrity sha512-AHOPeGq7hRzszykMBe8Xo9waFO3aTHm3TMAbSuHXU7NVSnR52gnr0iyl51sI9vCoKfXkE9/3+6oDd3bqUHUJLA==
+  dependencies:
+    "@atlaskit/analytics-next" "^8.0.0"
+    "@atlaskit/button" "^15.1.0"
+    "@atlaskit/theme" "^11.0.0"
+    "@atlaskit/tooltip" "^17.0.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/core" "^10.0.9"
+    react-loosely-lazy "^0.2.0"
+
 "@atlaskit/button@^15.1.0", "@atlaskit/button@^15.1.4":
   version "15.1.5"
   resolved "https://registry.yarnpkg.com/@atlaskit/button/-/button-15.1.5.tgz#1cbe12d86e9b54f2c42a9d8a5a8f874e2de7ae8f"
@@ -715,6 +728,14 @@
   resolved "https://registry.yarnpkg.com/@atlaskit/outbound-auth-flow-client/-/outbound-auth-flow-client-3.2.1.tgz#09be1bb0dd7bd71802dc35d5608a1ade260627d5"
   integrity sha512-wtB/2v84xoyQv7wMtxH6b//88UGUTIPsKX/s4JxpgO1AWqXIWWxYxqBojY63ONSIqAAzeYa9PLnUN5geqwnHZg==
   dependencies:
+    "@babel/runtime" "^7.0.0"
+
+"@atlaskit/page-header@^10.0.8":
+  version "10.0.8"
+  resolved "https://registry.yarnpkg.com/@atlaskit/page-header/-/page-header-10.0.8.tgz#2c3743dc6c5f1c035df34bd29d25cffad6664334"
+  integrity sha512-XChv9WsG1i4vtVkdXnIpBzmcXTxAkd8EuBAHjNZFNw8etoWXG+e1x60kLeR36+LejLKKK2VUt3ulL/kg36wf7A==
+  dependencies:
+    "@atlaskit/theme" "^11.0.0"
     "@babel/runtime" "^7.0.0"
 
 "@atlaskit/page@^12.0.0":
@@ -9605,6 +9626,11 @@ react-loadable@^5.1.0:
   integrity sha512-C8Aui0ZpMd4KokxRdVAm2bQtI03k2RMRNzOB+IipV3yxFTSVICv7WoUr5L9ALB5BmKO1iHgZtWM8EvYG83otdg==
   dependencies:
     prop-types "^15.5.0"
+
+react-loosely-lazy@^0.2.0:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/react-loosely-lazy/-/react-loosely-lazy-0.2.8.tgz#adb9d16abc5d94d08257d252be4d9c8bb2e07060"
+  integrity sha512-EtC9x15FtEt7Yv/cBVWuu1+vfAXLqVjYZaS8cMJxxgs8/dS8Uw3m2nA5V6HP0lTHpw19nRPsY9XFYIyJnFaauQ==
 
 react-node-resolver@^1.0.1:
   version "1.0.1"

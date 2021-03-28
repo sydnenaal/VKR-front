@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import { useAuth } from '@vkr/app-auth'
 
+import { WorkPage } from './pages'
 import { AppContainer, AuthContainer } from './containers'
-import { useModulesInternals } from './hooks'
+import { useModules } from './hooks'
 
 const PrivateRoute = memo(({ component: Component, ...props }) => {
   const { isAuth } = useAuth()
@@ -52,13 +53,15 @@ const AuthRoute = memo(() => {
 })
 
 const Routing = memo(() => {
-  const modules = useModulesInternals()
+  const modules = useModules()
 
-  const routes = useMemo(() => {
-    return modules.map(({ default: item, key, Component }) => (
-      <PrivateRoute key={key} exact path={item.route} component={Component} />
-    ))
-  }, [modules])
+  console.log(modules)
+
+  const routes = useMemo(
+    () =>
+      modules.map(({ key, route, component }) => <PrivateRoute key={key} exact path={route} component={component} />),
+    [modules],
+  )
 
   return (
     <Router>

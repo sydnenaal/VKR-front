@@ -7,7 +7,8 @@ import appointments from './data/today-appointments'
 
 import { useStyles } from './styled'
 
-const TimeTableCell = ({ startDate }) => {
+const TimeTableCell = (props) => {
+  const { startDate } = props
   const { todayCell, weekendCell } = useStyles()
   const date = new Date(startDate)
 
@@ -22,7 +23,8 @@ const TimeTableCell = ({ startDate }) => {
   return <WeekView.TimeTableCell {...props} />
 }
 
-const DayScaleCell = ({ startDate, today }) => {
+const DayScaleCell = (props) => {
+  const { startDate, today } = props
   const { today: todayClass, weekend } = useStyles()
 
   if (today) {
@@ -39,11 +41,11 @@ const DayScaleCell = ({ startDate, today }) => {
 export const SchedulerComponent = memo(() => {
   return (
     <Paper>
-      <Scheduler data={appointments} height={660}>
+      <Scheduler data={appointments}>
         <ViewState />
         <WeekView
-          startDayHour={9}
-          endDayHour={19}
+          startDayHour={0}
+          endDayHour={23}
           timeTableCellComponent={TimeTableCell}
           dayScaleCellComponent={DayScaleCell}
         />

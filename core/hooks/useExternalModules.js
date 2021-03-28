@@ -1,13 +1,13 @@
 import { useState, useLayoutEffect } from 'react'
-import { assoc, map, compose } from 'ramda'
+import { assoc, map, compose, prop } from 'ramda'
 import { v4 as uuidv4 } from 'uuid'
 
-export function useModulesInternals() {
+export function useExternalModules() {
   const [internals, setInternals] = useState([])
 
   useLayoutEffect(() => {
     const importByModuleName = (item) => import('@vkr/modules-' + item)
-    const prepareModules = compose(setInternals, map(assoc('key', uuidv4())))
+    const prepareModules = compose(setInternals, map(compose(assoc('key', uuidv4()), prop('module'))))
 
     const modulePromises = process.env.MODULES_LIST.map(importByModuleName)
 

@@ -1,19 +1,20 @@
 import React, { useMemo, memo } from 'react'
+import { pick } from 'ramda'
 
-import { useModulesInternals, useToggler } from '../../hooks'
+import { useModules, useToggler } from '../../hooks'
 import { useAuth } from '@vkr/app-auth'
 
 import { AppComponent } from '../../components'
 
 export const AppContainer = memo(({ children }) => {
-  const modules = useModulesInternals()
+  const modules = useModules()
 
   const { user, logout } = useAuth()
 
   const [isDrawerOpen, toggleIsDrawerOpen] = useToggler(false)
   const [isNotificationShow, toggleIsNotificationShow] = useToggler(false)
 
-  const actions = useMemo(() => modules.map(({ default: item, key }) => ({ ...item, key })), [modules, history])
+  const actions = useMemo(() => modules.map(pick(['route', 'icon', 'title', 'key'])), [modules])
 
   return (
     <AppComponent

@@ -39,6 +39,8 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
+    "@atlaskit/breadcrumbs": "^11.0.2",
+    "@atlaskit/page-header": "^10.0.8",
     "@devexpress/dx-react-core": "^2.7.5",
     "@devexpress/dx-react-scheduler": "^2.7.5",
     "@devexpress/dx-react-scheduler-material-ui": "^2.7.5",
