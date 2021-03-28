@@ -1,25 +1,16 @@
-import React, { useCallback, memo } from "react";
+import React, { useCallback, memo } from 'react'
 
-import Avatar from "@atlaskit/avatar";
-import {
-  AtlassianNavigation,
-  ProductHome,
-  AppSwitcher,
-} from "@atlaskit/atlassian-navigation";
-import ChevronDownIcon from "@atlaskit/icon/glyph/chevron-down";
-import DropdownMenu, {
-  DropdownItem,
-  DropdownItemGroup,
-} from "@atlaskit/dropdown-menu";
-import { PresentationLogo } from "@vkr/app-common";
+import Avatar from '@atlaskit/avatar'
+import { AtlassianNavigation, ProductHome, AppSwitcher } from '@atlaskit/atlassian-navigation'
+import ChevronDownIcon from '@atlaskit/icon/glyph/chevron-down'
+import DropdownMenu, { DropdownItem, DropdownItemGroup } from '@atlaskit/dropdown-menu'
+import { PresentationLogo } from '@vkr/app-common'
 
-import { UserContainer } from "./styled";
+import { UserContainer } from './styled'
 
-const Logo = () => (
-  <PresentationLogo margin="0" fontSize="17px" letterSpacing="1.5px" />
-);
+const Logo = () => <PresentationLogo margin="0" fontSize="17px" letterSpacing="1.5px" />
 
-const Home = () => <ProductHome icon={Logo} logo={Logo} />;
+const Home = () => <ProductHome icon={Logo} logo={Logo} />
 
 const UserActions = memo(({ trigger, onLogout }) => {
   return (
@@ -29,8 +20,8 @@ const UserActions = memo(({ trigger, onLogout }) => {
         <DropdownItem onClick={onLogout}>Logout</DropdownItem>
       </DropdownItemGroup>
     </DropdownMenu>
-  );
-});
+  )
+})
 
 export const AppBar = memo(({ onLogout, toggleDrawer, user }) => {
   const userComponent = useCallback(() => {
@@ -40,24 +31,17 @@ export const AppBar = memo(({ onLogout, toggleDrawer, user }) => {
         <p>{user.username}</p>
         <ChevronDownIcon />
       </UserContainer>
-    );
+    )
 
-    return <UserActions onLogout={onLogout} trigger={User} />;
-  }, [user, onLogout]);
+    return <UserActions onLogout={onLogout} trigger={User} />
+  }, [user, onLogout])
 
-  const appSwitcherComponnet = useCallback(
-    () => <AppSwitcher onClick={toggleDrawer} />,
-    [toggleDrawer]
-  );
+  const appSwitcherComponnet = useCallback(() => <AppSwitcher onClick={toggleDrawer} />, [toggleDrawer])
 
   return (
-    <AtlassianNavigation
-      renderProductHome={Home}
-      renderAppSwitcher={appSwitcherComponnet}
-      renderHelp={userComponent}
-    />
-  );
-});
+    <AtlassianNavigation renderProductHome={Home} renderAppSwitcher={appSwitcherComponnet} renderHelp={userComponent} />
+  )
+})
 
-UserActions.displayName = "UserActions";
-AppBar.displayName = "AppBar";
+UserActions.displayName = 'UserActions'
+AppBar.displayName = 'AppBar'

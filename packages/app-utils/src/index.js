@@ -1,1 +1,1 @@
-export * from "./generateRandomKey";
+export * from './generateRandomKey'

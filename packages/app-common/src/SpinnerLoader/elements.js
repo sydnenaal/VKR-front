@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 function getAnimationItems() {
-  let str = "";
+  let str = ''
 
   for (let i = 1; i <= 12; i++) {
     str += `
@@ -9,10 +9,10 @@ function getAnimationItems() {
             transform: rotate(${30 * (i - 1)}deg);
             animation-delay: ${-1.5 + i * 0.125}s;
         }
-    `;
+    `
   }
 
-  return str;
+  return str
 }
 
 export const Spinner = styled.div`
@@ -27,7 +27,7 @@ export const Spinner = styled.div`
   }
 
   div:after {
-    content: " ";
+    content: ' ';
     display: block;
     position: absolute;
     top: 4px;
@@ -49,4 +49,4 @@ export const Spinner = styled.div`
       opacity: 0;
     }
   }
-`;
+`

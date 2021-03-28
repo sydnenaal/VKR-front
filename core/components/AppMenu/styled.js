@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const MenuItem = styled.div`
   width: 100%;
   height: 60px;
   display: flex;
   cursor: pointer;
-`;
+`
 
 export const MenuItemIcon = styled.div`
   width: 70px;
@@ -14,7 +14,7 @@ export const MenuItemIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const MenuItemTitle = styled.div`
   display: flex;
@@ -23,5 +23,5 @@ export const MenuItemTitle = styled.div`
 
   height: 70px;
   width: 180px;
-  font-family: "Roboto Mono", monospace;
-`;
+  font-family: 'Roboto Mono', monospace;
+`

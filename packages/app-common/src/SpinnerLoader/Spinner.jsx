@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { Spinner } from "./elements";
+import { Spinner } from './elements'
 
 function SpinnerLoader() {
   return (
@@ -9,7 +9,7 @@ function SpinnerLoader() {
         <div key={i.toString()}></div>
       ))}
     </Spinner>
-  );
+  )
 }
 
-export default SpinnerLoader;
+export default SpinnerLoader

@@ -1,16 +1,13 @@
-import React, { useCallback, memo } from "react";
+import React, { useCallback, memo } from 'react'
 
-import { useAuth } from "@vkr/app-auth";
+import { useAuth } from '@vkr/app-auth'
 
-import { AuthComponent } from "../../components";
+import { AuthComponent } from '../../components'
 
 export const AuthContainer = memo(() => {
-  const { loading, loginUser } = useAuth();
+  const { loading, loginUser } = useAuth()
 
-  const handleSubmit = useCallback(
-    ({ login, password }) => loginUser(login, password),
-    [loading, loginUser]
-  );
+  const handleSubmit = useCallback(({ login, password }) => loginUser(login, password), [loading, loginUser])
 
-  return <AuthComponent loading={loading} onSubmit={handleSubmit} />;
-});
+  return <AuthComponent loading={loading} onSubmit={handleSubmit} />
+})

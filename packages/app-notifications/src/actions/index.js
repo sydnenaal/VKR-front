@@ -1,1 +1,1 @@
-export * from "./NotificationsQueueActions";
+export * from './NotificationsQueueActions'

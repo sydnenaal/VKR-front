@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const UserContainer = styled.div`
   max-width: 200px;
@@ -10,4 +10,4 @@ export const UserContainer = styled.div`
   p {
     margin: 0 0 0 10px;
   }
-`;
+`

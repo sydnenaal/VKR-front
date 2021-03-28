@@ -1,10 +1,10 @@
-import { useState, useCallback } from "react";
-import { not } from "ramda";
+import { useState, useCallback } from 'react'
+import { not } from 'ramda'
 
 export const useToggler = (defaultValue) => {
-  const [toggleState, setToggleState] = useState(defaultValue);
+  const [toggleState, setToggleState] = useState(defaultValue)
 
-  const handleToggle = useCallback(() => setToggleState(not), []);
+  const handleToggle = useCallback(() => setToggleState(not), [])
 
-  return [toggleState, handleToggle];
-};
+  return [toggleState, handleToggle]
+}

@@ -1,5 +1,5 @@
-import { pathOr } from "ramda";
+import { pathOr } from 'ramda'
 
-export const getNotificationsList = pathOr([], ["notifications", "queue"]);
+export const getNotificationsList = pathOr([], ['notifications', 'queue'])
 
-export const getNotificationsTimeout = pathOr({}, ["notifications", "timeout"]);
+export const getNotificationsTimeout = pathOr({}, ['notifications', 'timeout'])

@@ -1,19 +1,19 @@
-import "regenerator-runtime/runtime";
+import 'regenerator-runtime/runtime'
 
-import React, { StrictMode, Suspense, lazy } from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistStore } from "redux-persist";
+import React, { StrictMode, Suspense, lazy } from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
 
-import { PreloaderPage } from "./components";
-import { composeStoreWithModules } from "./store";
+import { PreloaderPage } from './components'
+import { composeStoreWithModules } from './store'
 
-const Router = lazy(() => import("./routing"));
+const Router = lazy(() => import('./routing'))
 
 function Application() {
-  const store = composeStoreWithModules({});
-  const persistor = persistStore(store);
+  const store = composeStoreWithModules({})
+  const persistor = persistStore(store)
 
   return (
     <StrictMode>
@@ -25,7 +25,7 @@ function Application() {
         </Provider>
       </Suspense>
     </StrictMode>
-  );
+  )
 }
 
-ReactDOM.render(<Application />, document.getElementById("root"));
+ReactDOM.render(<Application />, document.getElementById('root'))

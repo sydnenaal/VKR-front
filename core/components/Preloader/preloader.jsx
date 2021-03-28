@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
-import { PreloaderContainer } from "./styled";
-import { PresentationLogo, SpinnerLoader } from "@vkr/app-common";
+import { PreloaderContainer } from './styled'
+import { PresentationLogo, SpinnerLoader } from '@vkr/app-common'
 
 export function PreloaderPage() {
   return (
@@ -9,5 +9,5 @@ export function PreloaderPage() {
       <PresentationLogo />
       <SpinnerLoader />
     </PreloaderContainer>
-  );
+  )
 }

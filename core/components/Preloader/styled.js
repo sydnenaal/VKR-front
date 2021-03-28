@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { COLORS_PRIMARY } from "@vkr/app-constants";
+import { COLORS_PRIMARY } from '@vkr/app-constants'
 
 export const PreloaderContainer = styled.div`
   top: 0;
@@ -21,4 +21,4 @@ export const PreloaderContainer = styled.div`
   p {
     margin-top: -200px;
   }
-`;
+`

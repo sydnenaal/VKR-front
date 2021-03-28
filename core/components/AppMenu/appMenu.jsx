@@ -1,12 +1,12 @@
-import React, { useMemo, memo } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useMemo, memo } from 'react'
+import { useHistory } from 'react-router-dom'
 
-import Drawer from "@atlaskit/drawer";
+import Drawer from '@atlaskit/drawer'
 
-import { MenuItem, MenuItemIcon, MenuItemTitle } from "./styled";
+import { MenuItem, MenuItemIcon, MenuItemTitle } from './styled'
 
 export const AppMenu = memo(({ toggleDrawer, isOpen, actions }) => {
-  const history = useHistory();
+  const history = useHistory()
 
   const menuItems = useMemo(
     () =>
@@ -20,14 +20,14 @@ export const AppMenu = memo(({ toggleDrawer, isOpen, actions }) => {
           </MenuItemTitle>
         </MenuItem>
       )),
-    [actions]
-  );
+    [actions],
+  )
 
   return (
     <Drawer onClose={toggleDrawer} isOpen={isOpen}>
       {menuItems}
     </Drawer>
-  );
-});
+  )
+})
 
-AppMenu.displayName = "AppMenu";
+AppMenu.displayName = 'AppMenu'

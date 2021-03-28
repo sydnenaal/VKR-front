@@ -1,2 +1,2 @@
-export * from "./PresentationLogo";
-export * from "./SpinnerLoader";
+export * from './PresentationLogo'
+export * from './SpinnerLoader'
