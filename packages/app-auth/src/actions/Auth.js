@@ -1,3 +1,5 @@
+import { not, equals } from 'ramda'
+
 import { AUTH_LOADING, AUTH_ERROR, AUTH_SUCCESS } from '../reducers'
 
 // Auth mock
@@ -17,7 +19,7 @@ export function Login(login, password) {
             token: '000000000000',
           }
 
-          if (login !== 'admin' || password !== 'admin') {
+          if (not(equals(login, user.login)) || not(equals(password, user.password))) {
             reject({ success: false, message: '401: unauthorized' })
           }
 

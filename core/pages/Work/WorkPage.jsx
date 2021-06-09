@@ -3,9 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import ScheduleIcon from '@material-ui/icons/Schedule'
 
-import { SchedulerComponent, Breadcrumbs } from '../../components'
-
-import { PageContainer } from './styled'
+import { Breadcrumbs } from '../../components'
 
 const breadcrumbsSource = [
   { text: 'Main', key: uuidv4() },
@@ -13,10 +11,9 @@ const breadcrumbsSource = [
 ]
 
 export const WorkPage = memo(() => (
-  <PageContainer>
-    <Breadcrumbs title="Work schedule" source={breadcrumbsSource} />
-    <SchedulerComponent />
-  </PageContainer>
+  <>
+    <Breadcrumbs title="Work page" source={breadcrumbsSource} />
+  </>
 ))
 
 WorkPage.displayName = 'WorkPage'

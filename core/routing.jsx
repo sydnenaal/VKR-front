@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import { useAuth } from '@vkr/app-auth'
 
-import { WorkPage } from './pages'
 import { AppContainer, AuthContainer } from './containers'
 import { useModules } from './hooks'
 
@@ -40,11 +39,8 @@ const AuthRoute = memo(() => {
 
   const renderFunc = useCallback(
     ({ location }) => {
-      if (isAuth) {
-        return <Redirect to={{ pathname: '/', state: { from: location } }} />
-      }
-
-      return <AuthContainer />
+      const redirectParams = { pathname: '/', state: { from: location } }
+      return isAuth ? <Redirect to={redirectParams} /> : <AuthContainer />
     },
     [isAuth],
   )
@@ -55,11 +51,11 @@ const AuthRoute = memo(() => {
 const Routing = memo(() => {
   const modules = useModules()
 
-  console.log(modules)
-
   const routes = useMemo(
     () =>
-      modules.map(({ key, route, component }) => <PrivateRoute key={key} exact path={route} component={component} />),
+      modules.map(({ key, route, component }) => (
+        <PrivateRoute key={key} exact path={route} component={component} />
+      )),
     [modules],
   )
 

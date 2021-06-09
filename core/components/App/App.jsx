@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 
 import { AppBar, AppMenu, Notifications } from '../'
-import { Container } from './styled'
+import { Container, PageContainer } from './styled'
 
 export const AppComponent = memo(
   ({ isDrawerOpen, isNotificationOpen, toggleDrawer, toggleNotification, actions, user, onLogout, children }) => (
@@ -9,7 +9,7 @@ export const AppComponent = memo(
       <Notifications isOpen={isNotificationOpen} toggle={toggleNotification} />
       <AppBar onLogout={onLogout} user={user} toggleDrawer={toggleDrawer} />
       <AppMenu isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} actions={actions} />
-      {children}
+      <PageContainer>{children}</PageContainer>
     </Container>
   ),
 )

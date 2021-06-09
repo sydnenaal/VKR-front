@@ -1,1 +1,3 @@
-export const COLORS_PRIMARY = { background: '#f2ebe5' }
+export const COLORS_PRIMARY = { background: '#f5f5f5' }
+
+//#f2ebe5

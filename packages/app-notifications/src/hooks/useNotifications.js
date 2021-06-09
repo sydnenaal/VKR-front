@@ -11,9 +11,7 @@ export function useNotifications() {
   const notificationsQueue = useSelector(getNotificationsList)
 
   const setNotificationsTimeout = useCallback(compose(dispatch, configureNotificationsTimeout), [dispatch])
-
   const deleteNotification = useCallback(compose(dispatch, removeNotification), [dispatch])
-
   const initNotificaton = useCallback(compose(dispatch, pushNotification), [dispatch])
 
   return {
