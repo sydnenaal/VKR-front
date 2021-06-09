@@ -1,0 +1,14 @@
+{
+    "name": "@vkr/app-hooks",
+    "version": "0.0.1",
+    "description": "VKR Front useful hooks",
+    "main": "index.js",
+    "private": false,
+    "peerDependencies": {
+      "react": "*",
+      "uuid": "*",
+      "ramda": "*",
+      "reselect": "*",
+      "react-redux": "*"
+    }
+  }

@@ -1,0 +1,14 @@
+{
+    "name": "@vkr/app-ui-components",
+    "version": "0.0.1",
+    "description": "VKR Front ui components for common use",
+    "main": "index.js",
+    "private": false,
+    "peerDependencies": {
+      "react": "*",
+      "uuid": "*",
+      "ramda": "*",
+      "reselect": "*",
+      "react-redux": "*"
+    }
+  }

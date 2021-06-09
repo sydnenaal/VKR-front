@@ -1,8 +1,9 @@
 import React, { useMemo, memo } from 'react'
 import { pick } from 'ramda'
 
-import { useModules, useToggler } from '../../hooks'
+import { useModules } from '../../hooks'
 import { useAuth } from '@vkr/app-auth'
+import { useToggler } from '@vkr/app-hooks'
 
 import { AppComponent } from '../../components'
 
@@ -16,7 +17,7 @@ export const AppContainer = memo(({ children }) => {
 
   const actions = useMemo(() => modules.map(pick(['route', 'icon', 'title', 'key'])), [modules])
 
-  console.log(actions);
+  console.log(actions)
 
   return (
     <AppComponent

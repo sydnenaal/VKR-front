@@ -1,10 +1,10 @@
 import React, { memo, useMemo, useState, useCallback } from 'react'
 
+import { Card } from '@vkr/app-ui-components'
+
 import ExpandIcon from '@material-ui/icons/ChevronRight'
 import ProgressBar, { SuccessProgressBar } from '@atlaskit/progress-bar'
 import { Collapse } from 'reactstrap'
-
-import { Card } from '../../components'
 
 import {
   TotalWorked,

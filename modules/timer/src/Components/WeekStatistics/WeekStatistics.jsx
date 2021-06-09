@@ -2,9 +2,9 @@ import React, { memo } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import randomColor from 'randomcolor'
 
-import { PieChart } from 'react-minimal-pie-chart'
+import { Card } from '@vkr/app-ui-components'
 
-import { Card } from '../../components'
+import { PieChart } from 'react-minimal-pie-chart'
 
 import { Container, ChartSection, TasksSection, ColorIndicator, TaskName, TaskContainer } from './styled'
 

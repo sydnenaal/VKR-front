@@ -1,12 +1,12 @@
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 
-import PlayIcon from '@material-ui/icons/PlayArrow'
-import Pause from '@material-ui/icons/Pause'
+import { useToggler } from '@vkr/app-hooks'
+import { Card } from '@vkr/app-ui-components'
 
 import DropdownMenu, { DropdownItem, DropdownItemGroup } from '@atlaskit/dropdown-menu'
 
-import { useToggler } from '../../hooks'
-import { Card } from '../../components'
+import PlayIcon from '@material-ui/icons/PlayArrow'
+import Pause from '@material-ui/icons/Pause'
 
 import {
   TimerSection,
