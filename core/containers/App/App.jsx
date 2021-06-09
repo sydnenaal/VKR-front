@@ -16,6 +16,8 @@ export const AppContainer = memo(({ children }) => {
 
   const actions = useMemo(() => modules.map(pick(['route', 'icon', 'title', 'key'])), [modules])
 
+  console.log(actions);
+
   return (
     <AppComponent
       toggleDrawer={toggleIsDrawerOpen}

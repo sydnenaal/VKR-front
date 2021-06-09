@@ -1,0 +1,7 @@
+{
+    "name": "@vkr/app-icon-pattern",
+    "version": "0.0.1",
+    "description": "VKR Front module icon boilerplate",
+    "main": "index.js",
+    "private": false
+  }
