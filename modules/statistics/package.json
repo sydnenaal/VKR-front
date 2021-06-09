@@ -1,0 +1,10 @@
+{
+    "name": "@vkr/modules-statistics",
+    "version": "0.0.1",
+    "description": "Default settings module",
+    "main": "index.js",
+    "private": false,
+    "dependencies": {
+      "@vkr/app-icon-pattern": "^0.0.1"
+    }
+  }

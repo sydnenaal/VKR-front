@@ -1,9 +1,7 @@
 import React, { memo } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import ScheduleIcon from '@material-ui/icons/Schedule'
-
-import { Timer, WeekReports, WeekStatistics } from '../../containers'
+import { Timer, WeekReports, WeekStatistics } from './components'
 import { Breadcrumbs } from '../../components'
 
 const breadcrumbsSource = [
@@ -23,11 +21,3 @@ export const TimerPage = memo(() => (
 ))
 
 TimerPage.displayName = 'TimerPage'
-
-export const TimerPageMenuItem = {
-  component: TimerPage,
-  icon: ScheduleIcon,
-  route: '/timer',
-  title: 'Timer',
-  key: uuidv4(),
-}

@@ -22,6 +22,7 @@
     "@vkr/app-utils": "^0.0.1",
     "@vkr/modules-settings": "^0.0.1",
     "@vkr/modules-timings": "^0.0.1",
+    "@vkr/modules-timer": "^0.0.1",
     "react-router-dom": "^5.2.0"
   }
 }
