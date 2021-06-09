@@ -40,6 +40,7 @@ const AuthRoute = memo(() => {
   const renderFunc = useCallback(
     ({ location }) => {
       const redirectParams = { pathname: '/', state: { from: location } }
+
       return isAuth ? <Redirect to={redirectParams} /> : <AuthContainer />
     },
     [isAuth],
@@ -51,13 +52,13 @@ const AuthRoute = memo(() => {
 const Routing = memo(() => {
   const modules = useModules()
 
-  const routes = useMemo(
-    () =>
-      modules.map(({ key, route, component }) => (
-        <PrivateRoute key={key} exact path={route} component={component} />
-      )),
-    [modules],
-  )
+  const routes = useMemo(() => {
+    const parseModule = ({ key, route, component }) => (
+      <PrivateRoute key={key} exact path={route} component={component} />
+    )
+
+    return modules.map(parseModule)
+  }, [modules])
 
   return (
     <Router>

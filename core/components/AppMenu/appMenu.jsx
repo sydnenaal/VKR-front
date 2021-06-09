@@ -8,14 +8,17 @@ import { MenuItem, MenuItemIcon, MenuItemTitle } from './styled'
 export const AppMenu = memo(({ toggleDrawer, isOpen, actions }) => {
   const history = useHistory()
 
+  const handleClick = (route) => () => {
+    history.push(route)
+    toggleDrawer()
+  }
+
   const menuItems = useMemo(
     () =>
       actions.map(({ icon: Icon, route, title, key, type }) => (
-        <MenuItem key={key} onClick={() => history.push(route)}>
+        <MenuItem key={key} onClick={handleClick(route)}>
           <MenuItemIcon>{type === 'external' ? <img width="40%" src={Icon} /> : <Icon />}</MenuItemIcon>
-          <MenuItemTitle>
-            <p>{title}</p>
-          </MenuItemTitle>
+          <MenuItemTitle>{title}</MenuItemTitle>
         </MenuItem>
       )),
     [actions],
