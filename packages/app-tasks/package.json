@@ -9,6 +9,7 @@
       "uuid": "*",
       "ramda": "*",
       "reselect": "*",
-      "react-redux": "*"
+      "react-redux": "*",
+      "@vkr/app-utils": "^0.0.1"
     }
   }

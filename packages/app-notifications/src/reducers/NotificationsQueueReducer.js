@@ -13,7 +13,7 @@ const initialState = {
   timeout: {
     error: 'none',
     warning: 3000,
-    attachment: 'none',
+    announcement: 30000,
   },
   queue: initialQueue,
 }

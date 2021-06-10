@@ -1,1 +1,2 @@
-export * from './generateRandomKey'
+export * from './parseSecondsToDate'
+export * from './parseTimeToSeconds'
