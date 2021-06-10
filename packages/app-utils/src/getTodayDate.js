@@ -5,5 +5,5 @@ export function getTodayDate() {
   const mm = String(today.getMonth() + 1).padStart(2, '0') //January is 0
   const yyyy = today.getFullYear()
 
-  return `${dd}:${mm}:${yyyy}`
+  return `${dd}.${mm}.${yyyy}`
 }

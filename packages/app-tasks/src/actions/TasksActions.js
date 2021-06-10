@@ -28,7 +28,7 @@ export function removeTask(task) {
 
 export function incrementSecond() {
   return (dispatch, getState) => {
-    const today = getTodayDate()
+    const today = getTodayDate().trim()
     const tasks = compose(getTasks, getState)()
     const activeTaskKey = compose(getActiveTaskKey, getState)()
     const { timings } = find(compose(equals(activeTaskKey), prop('key')))(tasks)

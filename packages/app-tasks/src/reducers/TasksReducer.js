@@ -9,7 +9,6 @@ export const SET_TASK_TIMING = 'tasks/set_task_timing'
 export const SET_TASKS = 'tasks/set_tasks'
 
 function updateTiming({ id, timing }) {
-  console.log(timing)
   return map((task) => (equals(task.key, id) ? assoc('timings', timing, task) : task))
 }
 
