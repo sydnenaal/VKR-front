@@ -1,6 +1,6 @@
 import { compose, find, equals, prop } from 'ramda'
 
-import { parseSecondsToDate, parseTimeToSeconds } from '@vkr/app-utils'
+import { parseSecondsToDate, parseTimeToSeconds, getTodayDate } from '@vkr/app-utils'
 
 import { SET_TASKS, REMOVE_TASK, ADD_TASK, SET_TASK_TIMING, SET_ACTIVE_TASK } from '../reducers'
 import { getActiveTaskKey, getTasks } from '../selectors'
@@ -28,7 +28,7 @@ export function removeTask(task) {
 
 export function incrementSecond() {
   return (dispatch, getState) => {
-    const today = '10.06.2021'
+    const today = getTodayDate()
     const tasks = compose(getTasks, getState)()
     const activeTaskKey = compose(getActiveTaskKey, getState)()
     const { timings } = find(compose(equals(activeTaskKey), prop('key')))(tasks)

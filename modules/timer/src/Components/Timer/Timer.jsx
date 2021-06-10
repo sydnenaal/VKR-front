@@ -4,6 +4,7 @@ import { useToggler } from '@vkr/app-hooks'
 import { useTasks } from '@vkr/app-tasks'
 import { useNotifications } from '@vkr/app-notifications'
 import { Card } from '@vkr/app-ui-components'
+import { getTodayDate } from '@vkr/app-utils'
 
 import PlayIcon from '@material-ui/icons/PlayArrow'
 import Pause from '@material-ui/icons/Pause'
@@ -31,7 +32,7 @@ function getTaskDescription({ code, title }) {
 }
 
 function getTodayTiming(timings) {
-  const todayDate = '10.06.2021'
+  const todayDate = getTodayDate()
   const todayWorked = timings.find(({ date }) => date === todayDate)
 
   return todayWorked && todayWorked.time
