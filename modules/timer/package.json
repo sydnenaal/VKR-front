@@ -7,6 +7,7 @@
     "dependencies": {
       "@vkr/app-icon-pattern": "^0.0.1",
       "@vkr/app-ui-components": "^0.0.1",
-      "@vkr/app-hooks": "^0.0.1"
+      "@vkr/app-hooks": "^0.0.1",
+      "@vkr/app-tasks": "^0.0.1"
     }
   }

@@ -4,10 +4,10 @@ export const SET_NOTIFICATIONS = 'notifications/set_notification'
 export const SET_TIMEOUT_CONFIG = 'notifications/set_timeout_config'
 
 const MAX_LENGTH = 8
-const initialQueue = new Array(MAX_LENGTH).fill(1).map(() => ({
+const initialQueue = new Array(MAX_LENGTH).fill({
   isOpen: false,
   id: uuidv4(),
-}))
+})
 
 const initialState = {
   timeout: {

@@ -1,0 +1,14 @@
+{
+    "name": "@vkr/app-tasks",
+    "version": "0.0.1",
+    "description": "VKR Front tasks store and handling",
+    "main": "index.js",
+    "private": false,
+    "peerDependencies": {
+      "react": "*",
+      "uuid": "*",
+      "ramda": "*",
+      "reselect": "*",
+      "react-redux": "*"
+    }
+  }

@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage'
 
 import { AuthReducer } from '@vkr/app-auth'
 import { NotificationsQueueReducer } from '@vkr/app-notifications'
+import { TasksReducer } from '@vkr/app-tasks'
 
 const persistConfig = {
   key: 'root',
@@ -18,6 +19,7 @@ export const composeStoreWithModules = (modulesReducers) => {
     ...modulesReducers,
     auth: AuthReducer,
     notifications: NotificationsQueueReducer,
+    tasks: TasksReducer,
   }
 
   return createStore(
