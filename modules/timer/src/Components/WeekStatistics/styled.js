@@ -15,6 +15,10 @@ export const ChartSection = styled.div`
   justify-content: center;
 `
 
+export const Percents = styled.span`
+  font-weight: 400;
+`
+
 export const TasksSection = styled.div`
   width: 65%;
   height: 100%;
